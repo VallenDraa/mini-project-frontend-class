@@ -1,0 +1,365 @@
+@import "reset.css";
+@import "utility.css";
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+/* Variables warna */
+:root {
+  --coffee-main: rgb(192, 144, 22);
+  --gray-lightest: rgb(217, 217, 217);
+  --gray-lightest-transparent: rgba(217, 217, 217, 0.6);
+  --gray-dark-transparent: rgba(30, 30, 30, 0.6);
+  --gray-dark: rgb(23, 23, 23);
+  --gray-darkest: rgb(13, 12, 12);
+}
+
+.site-wrapper {
+  padding-block: 24px;
+  font-family: "Lato", sans-serif;
+  background-color: var(--gray-darkest);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--coffee-main);
+}
+
+.header-nav {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.header-nav-item {
+  color: var(--gray-lightest);
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.banner-coffee {
+  margin-block: 28px;
+  border-radius: 12px;
+}
+
+.user-info {
+  background-color: var(--gray-dark-transparent);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  gap: 48px;
+  align-items: center;
+}
+
+.user-info-detail-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.user-info-image {
+  border-radius: 50%;
+}
+
+.user-info-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info-fullname {
+  font-size: 28px;
+  color: var(--gray-lightest);
+  font-weight: bold;
+}
+
+.user-info-nickname {
+  font-size: 24px;
+  color: var(--gray-lightest);
+}
+
+.user-info-title {
+  padding-block: 20px;
+  font-size: 20px;
+  color: var(--coffee-main);
+}
+
+.orders {
+  border: 0;
+  background-color: var(--gray-dark-transparent);
+  backdrop-filter: blur(12px);
+  width: 75%;
+  max-width: 480px;
+  border-radius: 12px;
+}
+
+.orders::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.orders-header {
+  display: flex;
+  color: var(--coffee-main);
+  justify-content: space-between;
+}
+
+.orders-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.orders-close-button {
+  cursor: pointer;
+}
+
+.orders-list {
+  margin-block: 12px;
+  height: 320px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.order-item {
+  background-color: var(--gray-dark);
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.order-item-image {
+  height: 64px;
+  border-radius: 50%;
+}
+
+.order-item-name {
+  color: var(--gray-lightest);
+  font-weight: bold;
+}
+
+.order-item-price {
+  color: var(--coffee-main);
+}
+
+.orders-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orders-total-price {
+  color: var(--coffee-main);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sub-title {
+  font-size: 32px;
+  color: var(--coffee-main);
+  font-weight: bold;
+  margin-block: 24px;
+}
+
+.menu-list {
+  flex-wrap: wrap;
+  display: flex;
+  gap: 28px;
+}
+
+.menu-item {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  background-color: var(--gray-darkest);
+  border-radius: 12px;
+}
+
+.menu-item img {
+  border-radius: 4px;
+}
+
+.menu-item h2 {
+  font-weight: bold;
+  margin-top: 4px;
+  color: var(--gray-lightest);
+}
+
+.menu-item-action {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-item span {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--coffee-main);
+}
+
+.chat-button {
+  align-self: flex-end;
+  backdrop-filter: blur(12px);
+  color: var(--coffee-main);
+  background-color: var(--gray-dark-transparent);
+  cursor: pointer;
+  font-size: 28px;
+  padding: 12px;
+  border-radius: 50%;
+}
+
+.chat-wrapper {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-notice {
+  max-width: 320px;
+  border-radius: 8px;
+  border-bottom-right-radius: 0;
+  padding: 12px;
+  backdrop-filter: blur(12px);
+  background-color: var(--gray-dark-transparent);
+}
+
+.chat-notice-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.chat-notice-title {
+  color: var(--coffee-main);
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.chat-notice-message {
+  color: var(--gray-lightest);
+}
+
+.chat-notice-close-button {
+  cursor: pointer;
+  color: var(--coffee-main);
+  font-size: 20px;
+}
+
+.chat-box {
+  background-color: var(--gray-dark-transparent);
+  backdrop-filter: blur(12px);
+  padding: 16px;
+  border-radius: 12px;
+  width: 320px;
+}
+
+.chat-box-header {
+  display: flex;
+  gap: 8px;
+  color: var(--gray-lightest);
+  background-color: var(--gray-dark);
+  padding: 8px;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.chat-box-picture {
+  height: 48px;
+  border-radius: 50%;
+}
+
+.chat-box-list {
+  display: flex;
+  height: 300px;
+  overflow: auto;
+  flex-direction: column;
+  padding-block: 12px;
+  gap: 12px;
+}
+
+.chat-box-actions {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  color: var(--gray-lightest);
+  background-color: var(--gray-dark);
+  gap: 8px;
+}
+
+.chat-box-input {
+  flex-grow: 1;
+  padding: 6px 12px;
+}
+
+.chat-box-input::placeholder {
+  color: var(--gray-lightest-transparent);
+}
+
+.chat-box-user-bubble {
+  background-color: var(--coffee-main);
+  border-radius: 8px;
+  border-bottom-right-radius: 0;
+  padding: 6px 12px;
+  max-width: 75%;
+  align-self: flex-end;
+}
+
+.chat-box-ai-bubble {
+  background-color: var(--gray-darkest);
+  border-radius: 8px;
+  border-bottom-left-radius: 0;
+  padding: 6px 12px;
+  max-width: 75%;
+  align-self: flex-start;
+  color: var(--gray-lightest);
+}
+
+.chat-box-submit {
+  padding-right: 6px;
+}
+
+.footer-copyright {
+  color: var(--gray-lightest);
+  margin-top: 48px;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* if (lebar layar maksimal 720px) {
+} */
+@media (max-width: 720px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .header-title {
+    font-size: 20px;
+  }
+
+  .header-nav-item {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 540px) {
+  .user-info {
+    flex-direction: column;
+  }
+
+  .user-info-detail {
+    align-items: center;
+  }
+}

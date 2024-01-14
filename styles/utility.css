@@ -1,0 +1,18 @@
+.container {
+  max-width: 1100px;
+  width: 90%;
+  margin-inline: auto;
+}
+
+.main-button {
+  text-align: center;
+  background-color: var(--coffee-main);
+  color: var(--gray-darkest);
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
