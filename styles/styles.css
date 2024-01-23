@@ -338,8 +338,32 @@
   font-size: 12px;
 }
 
-/* if (lebar layar maksimal 720px) {
-} */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  height: 100vh;
+  padding: 12px;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.auth-form-title {
+  color: var(--gray-lightest);
+  font-size: 32px;
+  margin-bottom: 6px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.auth-form-actions {
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
 @media (max-width: 720px) {
   .header {
     flex-direction: column;

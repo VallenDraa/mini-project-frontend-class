@@ -13,6 +13,27 @@
   cursor: pointer;
 }
 
+.link-button {
+  text-align: center;
+  color: var(--gray-lightest-transparent);
+}
+
+.link-button:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.text-input {
+  border-radius: 4px;
+  background-color: var(--gray-dark);
+  color: var(--gray-lightest);
+  padding: 6px 12px;
+}
+
+.text-input::placeholder {
+  color: var(--gray-lightest-transparent);
+}
+
 .hidden {
   display: none;
 }

@@ -1,4 +1,4 @@
-import { COFFEE_DATA } from "./data.js";
+import { COFFEE_DATA } from "../data.js";
 
 // Elemen notice
 const notice = document.querySelector(".chat-notice");
