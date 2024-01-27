@@ -1,3 +1,8 @@
+import { login } from "../lib/auth.js";
+import { deleteAccessToken, putAccessToken } from "../lib/fetch.js";
+
+deleteAccessToken();
+
 const loginForm = document.querySelector("#login-form");
 
 loginForm.addEventListener("submit", async function (e) {
@@ -6,19 +11,15 @@ loginForm.addEventListener("submit", async function (e) {
   const formData = new FormData(e.target);
   const inputValues = Object.fromEntries(formData);
 
-  try {
-    const result = await fetch("login.html", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(inputValues),
-    });
+  const response = await login({
+    email: inputValues.email,
+    password: inputValues.password,
+  });
 
-    if (!result.ok) {
-      throw new Error("Gagal untuk login");
-    }
-  } catch (error) {
-    alert(error.message);
+  if (!response.status) {
+    alert(response.message);
+  } else {
+    putAccessToken(response.data.accessToken);
+    window.location.href = "/";
   }
 });
