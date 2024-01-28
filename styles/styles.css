@@ -120,13 +120,13 @@
 .orders-close-button {
   cursor: pointer;
 }
-. .orders-list {
+.orders-list {
   margin-block: 12px;
   height: 320px;
   overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .order-item {
