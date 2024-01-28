@@ -4,7 +4,7 @@ import {
   renderMenu,
   renderUserOrders,
   renderUserTotalPrice,
-} from "../render-html.js";
+} from "../lib/render-html.js";
 
 // Event listener untuk notice
 async function main() {

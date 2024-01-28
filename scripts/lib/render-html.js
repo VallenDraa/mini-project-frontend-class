@@ -1,4 +1,4 @@
-import { createOrderUser, getOrdersUser } from "./lib/user.js";
+import { createOrderUser, getOrdersUser } from "./user.js";
 
 export function renderUserOrders(orders, ordersListElement) {
   ordersListElement.innerHTML = "";
@@ -8,12 +8,12 @@ export function renderUserOrders(orders, ordersListElement) {
       <li class="order-item">
         <img
           class="order-item-image"
-          src="https://source.unsplash.com/300x300"
+          src="https://source.unsplash.com/random/150x150?moccha-coffee"
         />
 
         <div class="order-item-detail">
           <h3 class="order-item-name">${order.product_name}</h3>
-          <span class="order-item-price">${order.product_quantity}x - Rp. ${order.price}</span>
+          <span class="order-item-price">${order.product_quantity}x - Rp. ${order.product_price}</span>
         </div>
       </li>
     `;
@@ -24,7 +24,7 @@ export function renderUserTotalPrice(orders, totalPriceElement) {
   // Hitung dan tampilkan ulang harga pesanan
   let totalPrice = 0;
   for (const order of orders) {
-    totalPrice += order.price * order.product_quantity;
+    totalPrice += order.product_price * order.product_quantity;
   }
 
   totalPriceElement.innerHTML = `Total: Rp. ${totalPrice}`;
@@ -42,7 +42,7 @@ export function renderMenu(
     menuItem.classList.add("menu-item");
     menuItem.innerHTML = `
       <img
-        src="${coffee.image}"
+        src="https://source.unsplash.com/random/150x150?moccha-coffee"
         alt="${coffee.name}"
       />
 
