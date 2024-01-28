@@ -25,7 +25,7 @@ export function renderUserOrders(orders, menu, ordersListElement) {
           <span class="order-item-price">${
             order.product_quantity
           }x - Rp. ${orderPrice}</span>
-          <span class="order-item-status">${
+          <span class="order-item-status">Status: ${
             order.is_accepted ? "Done" : "Belum Diproses"
           }</span>
         </div>
@@ -69,6 +69,7 @@ export function renderUserMenu(
       />
 
       <h2>${coffee.name}</h2>
+      <p>Stock: ${coffee.stock > 0 ? coffee.stock : "Habis"}</p>
 
       <div class="menu-item-action">
         <span>Rp. ${coffee.price}</span>
