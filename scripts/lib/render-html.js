@@ -1,9 +1,15 @@
-import { createOrderUser, getOrdersUser } from "./user.js";
+import { acceptOrder } from "./admin-data.js";
+import { createOrderUser, getOrdersUser } from "./user-data.js";
 
-export function renderUserOrders(orders, ordersListElement) {
+// Kode untuk render elemen pada halaman user
+export function renderUserOrders(orders, menu, ordersListElement) {
   ordersListElement.innerHTML = "";
 
   for (const order of orders) {
+    const orderPrice =
+      menu.find(coffee => coffee.id === order.product_id).price *
+      order.product_quantity;
+
     ordersListElement.innerHTML += `
       <li class="order-item">
         <img
@@ -13,24 +19,29 @@ export function renderUserOrders(orders, ordersListElement) {
 
         <div class="order-item-detail">
           <h3 class="order-item-name">${order.product_name}</h3>
-          <span class="order-item-price">${order.product_quantity}x - Rp. ${order.product_price}</span>
+          <span class="order-item-price">${order.product_quantity}x - Rp. ${orderPrice}</span>
         </div>
       </li>
     `;
   }
 }
 
-export function renderUserTotalPrice(orders, totalPriceElement) {
+export function renderUserTotalPrice(orders, menu, totalPriceElement) {
   // Hitung dan tampilkan ulang harga pesanan
   let totalPrice = 0;
+
   for (const order of orders) {
-    totalPrice += order.product_price * order.product_quantity;
+    const orderPrice =
+      menu.find(coffee => coffee.id === order.product_id).price *
+      order.product_quantity;
+
+    totalPrice += orderPrice;
   }
 
   totalPriceElement.innerHTML = `Total: Rp. ${totalPrice}`;
 }
 
-export function renderMenu(
+export function renderUserMenu(
   menu,
   menuListElement,
   ordersListElement,
@@ -46,7 +57,7 @@ export function renderMenu(
         alt="${coffee.name}"
       />
 
-      <h2 class="menu-item-name">${coffee.name}</h2>
+      <h2>${coffee.name}</h2>
 
       <div class="menu-item-action">
         <span>Rp. ${coffee.price}</span>
@@ -82,13 +93,83 @@ export function renderMenu(
       }
 
       // Render data yang baru
-      renderUserOrders(newUserOrders.data, ordersListElement);
-      renderUserTotalPrice(newUserOrders.data, totalPriceElement);
+      renderUserOrders(newUserOrders.data, menu, ordersListElement);
+      renderUserTotalPrice(newUserOrders.data, menu, totalPriceElement);
 
       alert(`Anda memesan ${coffee.name}`);
     });
 
     menuItem.querySelector(".menu-item-action").appendChild(button);
     menuListElement.appendChild(menuItem);
+  }
+}
+
+// Kode untuk render elemen pada halaman admin
+export function renderAdminMenu(menu, menuListElement) {
+  for (const coffee of menu) {
+    // Buat elemen menu list item
+    const menuItem = document.createElement("li");
+    menuItem.classList.add("menu-item");
+    menuItem.innerHTML = `
+      <img
+        src="https://source.unsplash.com/random/150x150?moccha-coffee"
+        alt="${coffee.name}"
+      />
+
+      <h2>${coffee.name}</h2>
+
+      <div class="menu-item-action">
+        <span>Rp. ${coffee.price}</span>
+      </div>
+    `;
+
+    menuListElement.appendChild(menuItem);
+  }
+}
+
+export function renderAdminOrders(orders, menu, ordersListElement) {
+  for (const order of orders) {
+    const orderPrice =
+      menu.find(coffee => coffee.id === order.product_id).price *
+      order.product_quantity;
+
+    // Buat elemen menu list item
+    const orderItem = document.createElement("li");
+    orderItem.classList.add("menu-item");
+    orderItem.innerHTML = `
+      <img
+        src="https://source.unsplash.com/random/150x150?moccha-coffee"
+        alt="${order.product_name}"
+      />
+
+      <h2>${order.product_name}</h2>
+      <p>Pelanggan: ${order.username}</p>
+
+      <div class="menu-item-action">
+        <span>Rp. ${orderPrice}</span>
+      </div>
+    `;
+
+    // Buat button untuk menambahkan event listener
+    const button = document.createElement("button");
+    button.innerHTML = order.is_accepted === 1 ? "Diterima" : "Terima";
+    button.disabled = order.is_accepted === 1;
+    button.classList.add("main-button");
+    button.addEventListener("click", async function () {
+      const response = await acceptOrder({ productId: order.order_id });
+
+      if (!response.status) {
+        alert(response.message);
+        return;
+      }
+
+      alert(`Anda telah menerima pesanan dari ${order.username}!`);
+
+      button.innerHTML = "Diterima";
+      button.disabled = true;
+    });
+
+    orderItem.querySelector(".menu-item-action").appendChild(button);
+    ordersListElement.appendChild(orderItem);
   }
 }

@@ -13,6 +13,11 @@
   cursor: pointer;
 }
 
+.main-button:disabled {
+  cursor: not-allowed;
+  background-color: var(--coffee-main-transparent);
+}
+
 .link-button {
   text-align: center;
   color: var(--gray-lightest-transparent);

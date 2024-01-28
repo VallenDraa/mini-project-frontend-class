@@ -1,7 +1,7 @@
 import { getAccessToken } from "../lib/fetch.js";
-import { getMenu, getOrdersUser } from "../lib/user.js";
+import { getMenu, getOrdersUser, getUser } from "../lib/user-data.js";
 import {
-  renderMenu,
+  renderUserMenu,
   renderUserOrders,
   renderUserTotalPrice,
 } from "../lib/render-html.js";
@@ -9,8 +9,18 @@ import {
 // Event listener untuk notice
 async function main() {
   const token = getAccessToken();
-
   if (!token) {
+    window.location.href = "/login.html";
+  }
+
+  const user = await getUser();
+
+  if (!user.data) {
+    window.location.href = "/login.html";
+  }
+
+  if (user.data.role !== "user") {
+    alert("Anda bukan user!");
     window.location.href = "/login.html";
   }
 
@@ -32,17 +42,26 @@ async function main() {
   // Elemen menu list
   const menuList = document.querySelector(".menu-list");
 
+  // Elemen user
+  const userFullName = document.querySelector(".user-info-fullname");
+  userFullName.textContent = user.data.username;
+
   const menu = await getMenu();
   const userOrders = await getOrdersUser();
 
-  if (!menu.status || !userOrders.status) {
-    alert(menu.message || userOrders.message);
+  if (!menu.status) {
+    alert(menu.message);
     return;
   }
 
-  renderUserOrders(userOrders.data, ordersList);
-  renderUserTotalPrice(userOrders.data, ordersTotalPrice);
-  renderMenu(menu.data, menuList, ordersList, ordersTotalPrice);
+  if (!userOrders.status) {
+    alert(userOrders.message);
+    return;
+  }
+
+  renderUserOrders(userOrders.data, menu.data, ordersList);
+  renderUserTotalPrice(userOrders.data, menu.data, ordersTotalPrice);
+  renderUserMenu(menu.data, menuList, ordersList, ordersTotalPrice);
 
   // Event listener untuk notice
   noticeCloseButton.addEventListener("click", function () {

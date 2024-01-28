@@ -1,5 +1,21 @@
 import { BASE_URL, fetchWithToken } from "./fetch.js";
 
+export async function getUser() {
+  try {
+    const json = await fetchWithToken(`${BASE_URL}/user`, {
+      method: "GET",
+    });
+
+    return json;
+  } catch (error) {
+    return {
+      status: false,
+      message: "gagal mengambil data user!",
+      data: null,
+    };
+  }
+}
+
 export async function getOrdersUser() {
   try {
     const json = await fetchWithToken(`${BASE_URL}/product/order-user`, {

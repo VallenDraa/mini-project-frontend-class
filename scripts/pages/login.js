@@ -1,5 +1,6 @@
 import { login } from "../lib/auth.js";
 import { deleteAccessToken, putAccessToken } from "../lib/fetch.js";
+import { getUser } from "../lib/user-data.js";
 
 deleteAccessToken();
 
@@ -18,8 +19,20 @@ loginForm.addEventListener("submit", async function (e) {
 
   if (!response.status) {
     alert(response.message);
-  } else {
-    putAccessToken(response.data.accessToken);
+    return;
+  }
+
+  putAccessToken(response.data.accessToken);
+  const userData = await getUser();
+
+  if (!userData.status) {
+    alert(userData.message);
+    return;
+  }
+
+  if (userData.data.role === "user") {
     window.location.href = "/";
+  } else {
+    window.location.href = "/admin.html";
   }
 });

@@ -38,5 +38,5 @@ export async function signup({ username, email, password }) {
 
 export function logout() {
   deleteAccessToken();
-  window.location.href = "login.html";
+  window.location.href = "/login.html";
 }

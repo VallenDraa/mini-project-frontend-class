@@ -1,8 +1,8 @@
 import { BASE_URL, fetchWithToken } from "./fetch.js";
 
-export async function getOrdersOwner() {
+export async function getOrdersAdmin() {
   try {
-    const json = await fetchWithToken(`${BASE_URL}/order-owner`, {
+    const json = await fetchWithToken(`${BASE_URL}/product/order-owner`, {
       method: "GET",
     });
 
