@@ -25,6 +25,6 @@ registerForm.addEventListener("submit", async function (e) {
     alert(response.message);
   } else {
     putAccessToken(response.data.accessToken);
-    window.location.href = "/login";
+    window.location.href = "/login.html";
   }
 });
