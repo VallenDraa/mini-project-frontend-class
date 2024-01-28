@@ -179,15 +179,13 @@ body {
 }
 
 .menu-list {
-  flex-wrap: wrap;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 28px;
 }
 
 .menu-item {
   display: flex;
-  flex-grow: 1;
-  flex-basis: 20%;
   flex-direction: column;
   background-color: var(--gray-darkest);
   border-radius: 12px;
