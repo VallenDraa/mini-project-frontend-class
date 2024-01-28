@@ -15,6 +15,10 @@
   --gray-darkest: rgb(13, 12, 12);
 }
 
+body {
+  background-color: var(--gray-darkest);
+}
+
 .site-wrapper {
   padding-block: 24px;
   font-family: "Lato", sans-serif;
