@@ -15,9 +15,11 @@ export function renderUserOrders(orders, menu, ordersListElement) {
       <li class="order-item">
         <img
           class="order-item-image"
-          src="${
-            image || "https://source.unsplash.com/random/150x150?moccha-coffee"
-          }"
+            onerror="this.src='images/placeholder.png'"
+            src="${
+              image ||
+              "https://source.unsplash.com/random/150x150?moccha-coffee"
+            }"
         />
 
         <div class="order-item-detail">
@@ -61,6 +63,7 @@ export function renderUserMenu(
     menuItem.classList.add("menu-item");
     menuItem.innerHTML = `
       <img
+        onerror="this.src='images/placeholder.png'"  
         src="${
           coffee.image ||
           "https://source.unsplash.com/random/150x150?moccha-coffee"
@@ -124,6 +127,7 @@ export function renderAdminMenu(menu, menuListElement) {
     menuItem.classList.add("menu-item");
     menuItem.innerHTML = `
       <img
+        onerror="this.src='images/placeholder.png'"  
         src="${
           coffee.image ||
           "https://source.unsplash.com/random/150x150?moccha-coffee"
@@ -155,6 +159,7 @@ export function renderAdminOrders(orders, menu, ordersListElement) {
     orderItem.classList.add("menu-item");
     orderItem.innerHTML = `
       <img
+        onerror="this.src='images/placeholder.png'"  
         src="${
           image || "https://source.unsplash.com/random/150x150?moccha-coffee"
         }""
