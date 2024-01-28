@@ -16,6 +16,7 @@ async function main() {
   const user = await getUser();
 
   if (!user.data) {
+    alert("Sesi anda habis atau terdapat kesalahan!");
     window.location.href = "/login.html";
   }
 

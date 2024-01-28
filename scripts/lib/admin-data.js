@@ -16,12 +16,12 @@ export async function getOrdersAdmin() {
   }
 }
 
-export async function addMenu({ name, stock, type }) {
+export async function addMenu({ name, stock, price, image }) {
   try {
     const json = await fetchWithToken(`${BASE_URL}/product`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, stock, type }),
+      body: JSON.stringify({ name, stock, type: "coffee", price, image }),
     });
 
     return json;

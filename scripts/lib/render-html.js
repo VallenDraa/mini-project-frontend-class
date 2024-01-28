@@ -6,20 +6,25 @@ export function renderUserOrders(orders, menu, ordersListElement) {
   ordersListElement.innerHTML = "";
 
   for (const order of orders) {
-    const orderPrice =
-      menu.find(coffee => coffee.id === order.product_id).price *
-      order.product_quantity;
+    const coffee = menu.find(coffee => coffee.id === order.product_id);
+
+    const image = coffee.image;
+    const orderPrice = coffee.price * order.product_quantity;
 
     ordersListElement.innerHTML += `
       <li class="order-item">
         <img
           class="order-item-image"
-          src="https://source.unsplash.com/random/150x150?moccha-coffee"
+          src="${
+            image || "https://source.unsplash.com/random/150x150?moccha-coffee"
+          }"
         />
 
         <div class="order-item-detail">
           <h3 class="order-item-name">${order.product_name}</h3>
-          <span class="order-item-price">${order.product_quantity}x - Rp. ${orderPrice}</span>
+          <span class="order-item-price">${
+            order.product_quantity
+          }x - Rp. ${orderPrice}</span>
         </div>
       </li>
     `;
@@ -53,7 +58,10 @@ export function renderUserMenu(
     menuItem.classList.add("menu-item");
     menuItem.innerHTML = `
       <img
-        src="https://source.unsplash.com/random/150x150?moccha-coffee"
+        src="${
+          coffee.image ||
+          "https://source.unsplash.com/random/150x150?moccha-coffee"
+        }"
         alt="${coffee.name}"
       />
 
@@ -112,11 +120,15 @@ export function renderAdminMenu(menu, menuListElement) {
     menuItem.classList.add("menu-item");
     menuItem.innerHTML = `
       <img
-        src="https://source.unsplash.com/random/150x150?moccha-coffee"
+        src="${
+          coffee.image ||
+          "https://source.unsplash.com/random/150x150?moccha-coffee"
+        }"
         alt="${coffee.name}"
       />
 
       <h2>${coffee.name}</h2>
+      <p>Stock: ${coffee.stock}</p>
 
       <div class="menu-item-action">
         <span>Rp. ${coffee.price}</span>
@@ -129,16 +141,19 @@ export function renderAdminMenu(menu, menuListElement) {
 
 export function renderAdminOrders(orders, menu, ordersListElement) {
   for (const order of orders) {
-    const orderPrice =
-      menu.find(coffee => coffee.id === order.product_id).price *
-      order.product_quantity;
+    const coffee = menu.find(coffee => coffee.id === order.product_id);
+
+    const image = coffee.image;
+    const orderPrice = coffee.price * order.product_quantity;
 
     // Buat elemen menu list item
     const orderItem = document.createElement("li");
     orderItem.classList.add("menu-item");
     orderItem.innerHTML = `
       <img
-        src="https://source.unsplash.com/random/150x150?moccha-coffee"
+        src="${
+          image || "https://source.unsplash.com/random/150x150?moccha-coffee"
+        }""
         alt="${order.product_name}"
       />
 

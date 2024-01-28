@@ -64,10 +64,44 @@
         <p class="footer-copyright">&copy; 2024 - Cafe Adukan Kopi</p>
       </div>
 
-      <!-- Tambah menu -->
-      <button class="new-menu-button">
-        <i class="fa-solid fa-plus"></i>
-      </button>
+      <!-- Tombol tambah menu -->
+      <div class="new-menu-wrapper">
+        <dialog class="new-menu">
+          <div class="new-menu-header">
+            <h2 class="new-menu-title">Tambah Menu</h2>
+            <button class="new-menu-close-button">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <form class="new-menu-form">
+            <input
+              placeholder="Nama Menu"
+              class="text-input"
+              name="nama"
+              type="text"
+            />
+            <input
+              placeholder="Harga"
+              class="text-input"
+              name="harga"
+              type="number"
+            />
+            <input
+              placeholder="Stock"
+              class="text-input"
+              name="stock"
+              type="number"
+            />
+
+            <button class="main-button">Tambah</button>
+          </form>
+        </dialog>
+
+        <button class="new-menu-button">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
     </div>
     <script type="module" src="scripts/pages/admin.js"></script>
   </body>
