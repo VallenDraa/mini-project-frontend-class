@@ -4,9 +4,11 @@ import { deleteAccessToken, putAccessToken } from "../lib/fetch.js";
 deleteAccessToken();
 
 const registerForm = document.querySelector("#sign-up-form");
+const signUpButton = document.querySelector("#sign-up-button");
 
 registerForm.addEventListener("submit", async function (e) {
   e.preventDefault();
+  signUpButton.disabled = true;
 
   const formData = new FormData(e.target);
   const inputValues = Object.fromEntries(formData);
@@ -16,6 +18,8 @@ registerForm.addEventListener("submit", async function (e) {
     email: inputValues.email,
     password: inputValues.password,
   });
+
+  signUpButton.disabled = false;
 
   if (!response.status) {
     alert(response.message);
