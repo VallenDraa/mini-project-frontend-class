@@ -25,6 +25,9 @@ export function renderUserOrders(orders, menu, ordersListElement) {
           <span class="order-item-price">${
             order.product_quantity
           }x - Rp. ${orderPrice}</span>
+          <span class="order-item-status">${
+            order.is_accepted ? "Done" : "Belum Diproses"
+          }</span>
         </div>
       </li>
     `;
