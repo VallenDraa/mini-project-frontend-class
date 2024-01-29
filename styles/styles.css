@@ -5,6 +5,7 @@
 /* Variables warna */
 :root {
   --coffee-main: rgb(192, 144, 22);
+  --coffee-main-transparent: rgb(192, 144, 22, 0.6);
   --gray-lightest: rgb(217, 217, 217);
   --gray-lightest-transparent: rgba(217, 217, 217, 0.6);
   --gray-dark-transparent: rgba(30, 30, 30, 0.6);
@@ -336,6 +337,32 @@
   margin-top: 48px;
   text-align: center;
   font-size: 12px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  height: 100vh;
+  padding: 12px;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.auth-form-title {
+  color: var(--gray-lightest);
+  font-size: 32px;
+  margin-bottom: 6px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.auth-form-actions {
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+  margin-top: 16px;
 }
 
 /* if (lebar layar maksimal 720px) {

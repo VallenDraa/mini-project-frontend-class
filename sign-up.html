@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <div class="site-wrapper">
+      <form class="auth-form" id="sign-up-form">
+        <h1 class="auth-form-title">Sign Up</h1>
+
+        <input
+          type="text"
+          name="username"
+          class="text-input"
+          placeholder="Username"
+        />
+
+        <input
+          type="email"
+          name="email"
+          class="text-input"
+          placeholder="Email"
+        />
+
+        <input
+          type="password"
+          name="password"
+          class="text-input"
+          placeholder="password"
+        />
+
+        <div class="auth-form-actions">
+          <button type="submit" id="sign-up-button" class="main-button">
+            Sign Up
+          </button>
+          <a class="link-button" href="login.html"
+            >Sudah punya akun? login disini.</a
+          >
+        </div>
+      </form>
+    </div>
+
+    <script src="./scripts/pages/sign-up.js" type="module"></script>
+  </body>
+</html>

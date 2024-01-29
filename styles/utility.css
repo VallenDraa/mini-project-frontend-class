@@ -13,6 +13,23 @@
   cursor: pointer;
 }
 
+.main-button:disabled {
+  cursor: not-allowed;
+  background-color: var(--coffee-main-transparent);
+}
+
+.text-input {
+  border-radius: 4px;
+  background-color: var(--gray-dark);
+  color: var(--gray-lightest);
+  padding: 6px 12px;
+}
+
+.link-button {
+  text-align: center;
+  color: var(--gray-lightest-transparent);
+}
+
 .hidden {
   display: none;
 }
