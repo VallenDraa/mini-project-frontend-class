@@ -1,6 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 @import "reset.css";
 @import "utility.css";
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 /* Variables warna */
 :root {
@@ -11,6 +11,10 @@
   --gray-dark-transparent: rgba(30, 30, 30, 0.6);
   --gray-dark: rgb(23, 23, 23);
   --gray-darkest: rgb(13, 12, 12);
+}
+
+body {
+  background-color: var(--gray-darkest);
 }
 
 .site-wrapper {
@@ -36,6 +40,7 @@
   display: flex;
   gap: 20px;
   justify-content: center;
+  align-items: center;
 }
 
 .header-nav-item {
@@ -79,7 +84,7 @@
   font-weight: bold;
 }
 
-.user-info-nickname {
+.user-info-email {
   font-size: 24px;
   color: var(--gray-lightest);
 }
@@ -117,14 +122,13 @@
 .orders-close-button {
   cursor: pointer;
 }
-
 .orders-list {
   margin-block: 12px;
   height: 320px;
   overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .order-item {
@@ -146,7 +150,10 @@
   font-weight: bold;
 }
 
-.order-item-price {
+.order-item-price,
+.order-item-status {
+  display: block;
+  font-size: 12px;
   color: var(--coffee-main);
 }
 
@@ -170,14 +177,13 @@
 }
 
 .menu-list {
-  flex-wrap: wrap;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 28px;
 }
 
 .menu-item {
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
   background-color: var(--gray-darkest);
   border-radius: 12px;
@@ -191,6 +197,10 @@
   font-weight: bold;
   margin-top: 4px;
   color: var(--gray-lightest);
+}
+
+.menu-item p {
+  color: var(--gray-lightest-transparent);
 }
 
 .menu-item-action {
